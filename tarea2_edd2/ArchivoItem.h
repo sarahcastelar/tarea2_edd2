@@ -29,14 +29,14 @@ class ArchivoItem{
 
 
 		void agregarRegistros(Item struct_item) {
-			ofstream fileC("archivoRegistros.dat", ios::out | ios::app | ios::binary);
+			ofstream fileC("archivoRegistros1.dat", ios::out | ios::app | ios::binary);
 			if (!fileC) {
 				cout << "Error de apertura en el archivo. " << endl;
 				return;
 			}
 			else {
 				fileC.seekp(0, ios::end);
-				fileC.seekp((struct_item.codigo - 1) * sizeof(struct_item));
+				//fileC.seekp((struct_item.codigo - 1) * sizeof(struct_item));
 				fileC.write(reinterpret_cast<const char*>(&struct_item), sizeof(struct_item));
 				fileC.close();
 			}
@@ -47,7 +47,7 @@ class ArchivoItem{
 
 		void buscarNombreS(const char* lookName) {
 			bool encontro = false;
-			ifstream fileC("archivoRegistros.dat", ios::in | ios::binary);
+			ifstream fileC("archivoRegistros1.dat", ios::in | ios::binary);
 			if (!fileC) {
 				cout << "Error de aprtura en el archivo!" << endl;
 			}
@@ -79,7 +79,7 @@ class ArchivoItem{
 		void buscarNombreB(const char* lookName, int mitad,int izquierda, int derecha) {
 			Item struct_item;
 
-			ifstream fileC("archivoRegistros.dat", ios::in | ios::binary);
+			ifstream fileC("archivoRegistros1.dat", ios::in | ios::binary);
 			if (!fileC) {
 				cout << "Error de aprtura en el archivo!" << endl;
 			}
